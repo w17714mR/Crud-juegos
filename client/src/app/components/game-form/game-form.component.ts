@@ -27,7 +27,15 @@ export class GameFormComponent implements OnInit {
   }
 
   saveNewGame() {
-    console.log(this.game)
+    delete this.game.created_at;
+    delete this.game.id;
+    this.gamesService.saveGame(this.game)
+      .subscribe(
+        res => {
+          console.log(res)
+        },
+        err => console.error(err)
+      )
   }
 
 }
