@@ -12,6 +12,10 @@ export class GameListComponent implements OnInit {
   constructor(private gamesService: GamesService) { }
 
   ngOnInit() {
+    this.getGames();
+  }
+
+  getGames() {
     this.gamesService.getGames().subscribe(
       res => {
         this.games = res;
@@ -19,5 +23,20 @@ export class GameListComponent implements OnInit {
       err => console.error(err)
     );
   }
+
+  deleteGame(id: string) {
+    this.gamesService.deleteGame(id).subscribe(
+      res => {
+
+        console.log(res);
+        this.getGames();
+      },
+
+      err => { console.log(err) }
+    )
+
+  }
+
+
 
 }
