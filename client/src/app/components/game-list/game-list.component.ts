@@ -37,6 +37,8 @@ export class GameListComponent implements OnInit {
 
   }
 
-
+  editGame(id: string) {
+    console.log(id);
+  }
 
 }
